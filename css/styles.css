@@ -1,0 +1,41 @@
+#editor-block {
+	position: relative;
+	width: 500px;
+	height: 100%;
+	margin: 0 auto;
+	overflow-x: auto;
+	overflow-y: hidden;
+}
+
+#editor-block #file-editor {
+	display: block;
+	height: 100%;
+	border: 1px solid gray;
+	overflow: hidden; 
+	padding: 5px;
+	padding-left: 33px;
+	background: #333232;
+    color: white;
+    resize: none;
+    font: 14px/14px monospace;
+    box-sizing: border-box;
+}
+
+#editor-block #line-numbers {
+	position: absolute;
+	top: 6px;
+	left: 0;
+    width: 20px;
+    height: 100%;
+    color: #cfcfcf;
+	padding-left: 4px;
+}
+
+#editor-block #line-numbers * {
+	width: 100%;
+    font: 14px/14px monospace;
+}
+
+#file-editor::selection {
+    background: rgba(250, 250, 250, .5);
+}
