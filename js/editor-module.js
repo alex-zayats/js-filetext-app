@@ -17,7 +17,7 @@ fileEditor.addEventListener('paste', setLines);
 fileEditor.addEventListener('dragend', setLines);
 fileEditor.addEventListener('keyup', setLines);
 
-fileEditor.addEventListener('keydown', tabIndent); //not realized yet
+fileEditor.addEventListener('keydown', tabIndent);
 
 fileEditor.addEventListener('cut', setLineLength);
 fileEditor.addEventListener('paste', setLineLength);
@@ -54,6 +54,11 @@ function tabIndent(event){
 
 	if(event.keyCode === 9){
 		event.preventDefault();
+		let curPosition = editorObj.selectionStart;
+		let beforeCaret = editorObj.value.substr(0, editorObj.selectionStart);
+		let afterCaret = editorObj.value.substr(editorObj.selectionStart, editorObj.value.length);
+		editorObj.value = beforeCaret + "    " + afterCaret;
+		editorObj.selectionStart = editorObj.selectionEnd = curPosition + 4;
 	}
 }
 
