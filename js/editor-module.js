@@ -39,27 +39,13 @@ function setLines(event){
 
 	setTimeout(function() {
 		rowsCount = editorObj.value.split(/\r\n|\r|\n/).length;
-		editorObj.rows = rowsCount;
+		editorObj.rows = (rowsCount > minRowsCount) ? rowsCount : minRowsCount;
 
 		lineNumbersBlock.innerHTML = "";
-		for (let i = 1; i <= rowsCount; i++) {
+		for (let i = 1; i <= editorObj.rows; i++) {
 			lineNumbersBlock.innerHTML += "<div>" + i + "</div>";
 		}
 	}, 0);
-}
-
-function tabIndent(event){
-
-	let editorObj = this;
-
-	if(event.keyCode === 9){
-		event.preventDefault();
-		let curPosition = editorObj.selectionStart;
-		let beforeCaret = editorObj.value.substr(0, editorObj.selectionStart);
-		let afterCaret = editorObj.value.substr(editorObj.selectionStart, editorObj.value.length);
-		editorObj.value = beforeCaret + "    " + afterCaret;
-		editorObj.selectionStart = editorObj.selectionEnd = curPosition + 4;
-	}
 }
 
 function setLineLength(event){
@@ -77,6 +63,20 @@ function setLineLength(event){
 		editorObj.cols = (colsCount > minColsCount) ? colsCount + 5 : minColsCount;
 	}, 0);
 
+}
+
+function tabIndent(event){
+
+	let editorObj = this;
+
+	if(event.keyCode === 9){
+		event.preventDefault();
+		let curPosition = editorObj.selectionStart;
+		let beforeCaret = editorObj.value.substr(0, editorObj.selectionStart);
+		let afterCaret = editorObj.value.substr(editorObj.selectionStart, editorObj.value.length);
+		editorObj.value = beforeCaret + "    " + afterCaret;
+		editorObj.selectionStart = editorObj.selectionEnd = curPosition + 4;
+	}
 }
 
 function checkCurPos(event){
