@@ -2,6 +2,9 @@
 
 let fileEditor = document.querySelector("#file-editor");
 let lineNumbersBlock = document.querySelector("#line-numbers");
+let caretPos = document.querySelector("#cur-pos");
+
+let caretLine, caretCol;
 let rowsCount, colsCount;
 let minRowsCount = 10;
 let minColsCount = 60;
@@ -20,6 +23,9 @@ fileEditor.addEventListener('cut', setLineLength);
 fileEditor.addEventListener('paste', setLineLength);
 fileEditor.addEventListener('keydown', setLineLength);
 fileEditor.addEventListener('keyup', setLineLength);
+
+fileEditor.addEventListener('keyup', checkCurPos);
+fileEditor.addEventListener('click', checkCurPos);
 
 function setLines(event){
 
@@ -66,4 +72,13 @@ function setLineLength(event){
 		editorObj.cols = (colsCount > minColsCount) ? colsCount + 5 : minColsCount;
 	}, 0);
 
+}
+
+function checkCurPos(event){
+
+	let editorObj = this;
+
+	caretLine = editorObj.value.substr(0, editorObj.selectionStart).split(/\r\n|\r|\n/).length;
+	caretCol = editorObj.value.substr(0, editorObj.selectionStart).split(/\r\n|\r|\n/).pop().length + 1;
+	caretPos.innerHTML = caretLine + ", " + caretCol;
 }
