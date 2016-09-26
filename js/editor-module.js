@@ -1,13 +1,31 @@
 "use strict"
 
+const LETTER_WIDTH = 14.1;
+
+let editorBlock = document.querySelector("#editor-block");
+let fileEditorWrapper = document.querySelector("#file-editor-wrapper");
 let fileEditor = document.querySelector("#file-editor");
 let lineNumbersBlock = document.querySelector("#line-numbers");
 let caretPos = document.querySelector("#cur-pos");
 
+/*
+const SCROLL_WIDTH = 18;
+const EDITOR_MIN_WIDTH = getStyleProp("#editor-wrapper", "min-width");
+
+let screenWidth = document.documentElement.clientWidth * 0.9 > EDITOR_MIN_WIDTH ? document.documentElement.clientWidth * 0.9 : EDITOR_MIN_WIDTH;
+let editorBlockWidth = screenWidth - document.querySelector("#structure-block").offsetWidth;
+
+fileEditorWrapper.style.width = editorBlockWidth + "px";
+fileEditor.cols = Math.ceil((editorBlockWidth - SCROLL_WIDTH - getStyleProp(fileEditor, "padding-left")  - getStyleProp(fileEditor, "padding-right")) / LETTER_WIDTH);
+*/
+
+fileEditorWrapper.style.width = "900px";
+fileEditor.cols = 900 / LETTER_WIDTH;
+
 let caretLine, caretCol;
 let rowsCount, colsCount;
-let minRowsCount = 10;
-let minColsCount = 60;
+let minRowsCount = document.querySelector("#file-editor").rows;
+let minColsCount = document.querySelector("#file-editor").cols;
 
 setLines.call(fileEditor);
 setLineLength.call(fileEditor);
@@ -26,6 +44,13 @@ fileEditor.addEventListener('keyup', setLineLength);
 
 fileEditor.addEventListener('keyup', checkCurPos);
 fileEditor.addEventListener('click', checkCurPos);
+
+function getStyleProp(elem, propName){
+	if (typeof elem == "string")
+		return parseInt(window.getComputedStyle(document.querySelector(elem), null).getPropertyValue(propName));
+	 else 
+	 	return parseInt(window.getComputedStyle(elem, null).getPropertyValue(propName));
+}
 
 function setLines(event){
 
@@ -60,7 +85,7 @@ function setLineLength(event){
 
 	setTimeout(function() {
 		colsCount = editorObj.value.split(/\r\n|\r|\n/).sort(function (a, b) { return b.length - a.length; }).shift().length;	
-		editorObj.cols = (colsCount > minColsCount) ? colsCount + 5 : minColsCount;
+		editorObj.cols = (colsCount > minColsCount) ? colsCount + 3 : minColsCount;
 	}, 0);
 
 }

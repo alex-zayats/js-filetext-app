@@ -1,32 +1,86 @@
+body {
+	margin: 0;
+}
+
+#editor-wrapper {
+    width: 1200px;
+    /*width: 90%;*/
+	margin: 0 auto;
+	margin-top: 100px;
+}
+
+#editor-wrapper:after {
+	content: "";
+	display: block;
+	clear: both;
+}
+
+#structure-block {
+	min-width: 300px;
+	/*max-width: 25%;*/
+	float: left;
+}
+
 #editor-block {
 	position: relative;
-	width: 500px;
-	height: 100%;
-	margin: 0 auto;
+	padding-top: 34px;
+	float: right;
+}
+
+#editor-block .save-link, #editor-block .close-link, #editor-block .filename {
+	display: block;
+	position: absolute;
+	width: auto;
+	height: 1em;
+	padding: 5px 10px;
+	color: #dfdfdf;
+	text-decoration: none;
+	background: #333232;
+	border-radius: 55% 55% 0 0;
+    font: 24px/24px monospace;
+}
+
+#editor-block .save-link {
+	top: 0;
+    left: 30px;
+}
+
+#editor-block .close-link {
+	top: 0;
+    right: 30px;
+}
+
+#editor-block .filename {
+	top: 0;
+    right: 50%;
+    transform: translate(50%, 0);
+}
+
+#editor-block #file-editor-wrapper {
+	position: relative;
 	overflow-x: auto;
 	overflow-y: hidden;
 }
 
 #editor-block #file-editor {
 	display: block;
-	height: 100%;
 	border: 1px solid gray;
 	overflow: hidden; 
 	padding: 5px;
-	padding-left: 33px;
-	padding-bottom: 15px;
+	padding-left: 45px;
+	padding-bottom: 25px;
 	background: #333232;
     color: white;
     resize: none;
-    font: 14px/14px monospace;
+    font: 23px/23px monospace;
     box-sizing: border-box;
 }
 
 #editor-block #line-numbers {
 	position: absolute;
-	top: 6px;
+	top: 7px;
 	left: 0;
-    width: 20px;
+    width: 40px;
     height: 100%;
     color: #cfcfcf;
 	padding-left: 4px;
@@ -34,7 +88,7 @@
 
 #editor-block #line-numbers * {
 	width: 100%;
-    font: 14px/14px monospace;
+    font: 23px/23px monospace;
 }
 
 #file-editor::selection {
@@ -47,5 +101,5 @@
     left: 20px;
     background: #333232;
     color: white;
-    font: 9px/12px monospace;
+    font: 19px/22px monospace;
 }
