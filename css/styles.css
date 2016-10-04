@@ -85,7 +85,7 @@ html, body {
     background-size: cover;
 }
 
-#structure-block .folder .name:hover:after, .file:hover:after{
+#structure-block .folder .name:hover:after, #structure-block .file:hover:after {
 	display: inline-block;
 }
 
