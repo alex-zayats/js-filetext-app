@@ -10,22 +10,31 @@
   <body>
   <div id="editor-wrapper">
   	<div id="structure-block">
-  		Main tree structure
-  		<div class="test">test=test=test</div>
-  		<div class="test">test=test=test</div>
-  		<div class="test">test=test=test</div>
-  		<div class="test">test=test=test</div>
-  		<div class="test">test=test=ttest=test=testtestt</div>
+  		<ul class="folder">
+  			<span class="name">test=test=test</span>
+  			<li class="file">test=test=test.txt</li>
+  			<span class="create">Create</span>
+  		</ul>
+  		<ul class="folder">
+  			<span class="name">test=test=test</span>
+  			<span class="create">Create</span>
+  		</ul>
+  		<ul class="folder">
+  		  	<span class="name">test=test=test</span>
+  			<li class="file">test=test=ttest=test=testtestt.txt</li>
+  			<span class="create">Create</span>
+  		</ul>
+    <div id="border-line"></div>
   	</div>
     <div id="editor-block">
     	<a href="#" class="save-link">Save</a>
     	<span class="filename">Some-file-name.txt</span>
     	<a href="#" class="close-link">Close</a>
+    	<div id="line-numbers"></div>
 	    <div id="file-editor-wrapper">
-		    <div id="line-numbers"></div>
 		    <textarea name="file-editor" id="file-editor" cols="85" rows="10"></textarea>
-		    <div id="cur-pos-block">cursor position: <span id="cur-pos">1, 1</span></div>
 	    </div>
+	    <div id="cur-pos-block">cursor position: <span id="cur-pos">1, 1</span></div>
     </div>
   </div>
   </body>

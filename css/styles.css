@@ -2,23 +2,104 @@ body {
 	margin: 0;
 }
 
-#editor-wrapper {
-    width: 1200px;
-    /*width: 90%;*/
-	margin: 0 auto;
-	margin-top: 100px;
+html, body {
+	height: 100%;
 }
 
-#editor-wrapper:after {
-	content: "";
-	display: block;
-	clear: both;
+#editor-wrapper {
+    width: 100%;
+    height: 100%;
 }
 
 #structure-block {
-	min-width: 300px;
-	/*max-width: 25%;*/
+	display: block;
+	min-width: 0px;
+	max-width: 25%;
+	width: 1px;
+	height: 100%;
+	border-right: 2px solid red;
 	float: left;
+	position: relative;
+	box-sizing: border-box;
+}
+
+#structure-block .folder {
+	position: relative;
+	width: 100%;
+	padding: 0;
+	padding-left: 25px;
+	overflow: hidden;
+    box-sizing: border-box;
+}
+
+#structure-block .folder .name {
+	display: block;
+	width: auto;
+	position: relative;
+	cursor: default;
+	white-space: nowrap;
+}
+
+#structure-block .folder .name:before {
+	content: "";
+	display: inline-block;
+	width: 1em;
+	height: 1em;
+    background: url(folder.png) center center;
+    background-size: cover;
+    margin-right: 5px;
+}
+
+#structure-block .folder .name:after {
+	content: "";
+	display: none;
+	width: 1em;
+    height: 1em;
+    background: url(cross.png) center center;
+    background-size: cover;
+}
+
+#structure-block .file {
+	display: block;
+    margin-left: 20px;
+   	cursor: default;
+   	white-space: nowrap;
+}
+
+#structure-block .file:before {
+	content: "";
+	display: inline-block;
+	width: 1em;
+	height: 1em;
+    background: url(file.png) center center;
+    background-size: cover;
+    margin-right: 5px;
+}
+
+#structure-block .file:after {
+	content: "";
+	display: none;
+	width: 1em;
+    height: 1em;
+    background: url(cross.png) center center;
+    background-size: cover;
+}
+
+#structure-block .folder .name:hover:after, .file:hover:after{
+	display: inline-block;
+}
+
+#border-line {
+	display: block;
+	position: absolute;
+	top: 50%;
+	left: 0;
+	width: 0px;
+	height: 0px;
+	border: 10px solid transparent;	
+	border-left: 10px solid red;
+	z-index: 10;
+	cursor: pointer;
 }
 
 #editor-block {
@@ -64,7 +145,7 @@ body {
 
 #editor-block #file-editor {
 	display: block;
-	border: 1px solid gray;
+	border: none;
 	overflow: hidden; 
 	padding: 5px;
 	padding-left: 45px;
@@ -78,12 +159,13 @@ body {
 
 #editor-block #line-numbers {
 	position: absolute;
-	top: 7px;
+	top: 41px;
 	left: 0;
     width: 40px;
-    height: 100%;
     color: #cfcfcf;
 	padding-left: 4px;
+	background: #333232;
+	z-index: 5;
 }
 
 #editor-block #line-numbers * {
