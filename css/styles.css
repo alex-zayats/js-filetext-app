@@ -19,8 +19,9 @@ html, body {
 	height: 100%;
 	border-right: 2px solid red;
 	float: left;
-	position: relative;
+	position: fixed;
 	box-sizing: border-box;
+	z-index: 10;
 }
 
 #structure-block .folder {
@@ -103,9 +104,11 @@ html, body {
 }
 
 #editor-block {
-	position: relative;
+	position: fixed;
+	height: 100%;
 	padding-top: 34px;
-	float: right;
+	right: 0;
+	top: 0;
 }
 
 #editor-block .save-link, #editor-block .close-link, #editor-block .filename {
@@ -138,28 +141,27 @@ html, body {
 }
 
 #editor-block #file-editor-wrapper {
+	height: calc(100% - 33px);
+	overflow: scroll;
 	position: relative;
-	overflow-x: auto;
-	overflow-y: hidden;
 }
 
 #editor-block #file-editor {
 	display: block;
 	border: none;
-	overflow: hidden; 
 	padding: 5px;
 	padding-left: 45px;
-	padding-bottom: 25px;
 	background: #333232;
     color: white;
     resize: none;
     font: 23px/23px monospace;
     box-sizing: border-box;
+    overflow: hidden;
 }
 
-#editor-block #line-numbers {
+#editor-block #file-editor-wrapper #line-numbers {
 	position: absolute;
-	top: 41px;
+	top: 5px;
 	left: 0;
     width: 40px;
     color: #cfcfcf;
@@ -168,7 +170,7 @@ html, body {
 	z-index: 5;
 }
 
-#editor-block #line-numbers * {
+#editor-block #file-editor-wrapper #line-numbers * {
 	width: 100%;
     font: 23px/23px monospace;
 }

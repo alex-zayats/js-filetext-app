@@ -120,7 +120,7 @@ function setLineLength(event){
 			fileEditorWrapper.style.width = document.documentElement.clientWidth - getStyleProp(structBlock, "width") + "px";
 		} else {
 			editorObj.cols = minColsCount;
-			fileEditorWrapper.style.width = fileEditor.style.width = document.documentElement.clientWidth - getStyleProp(structBlock, "width") -1 + "px";
+			fileEditorWrapper.style.width = fileEditor.style.width = document.documentElement.clientWidth - getStyleProp(structBlock, "width") + "px";
 		}
 	}, 0);
 
